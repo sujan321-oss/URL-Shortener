@@ -17,12 +17,39 @@ router.post("/",async (req,res)=>{
 
 
 
-    res.json({"shortner":shortner})
+    res.json({"shortner":`http://localhost:8001/urlshort/${shortner}`})
 
 
 })
 
 
+router.get("/:id",async (req,res)=>{
+  const shortner=req.params.id;
+  
+  const data=await db.findOneAndUpdate({shortner:shortner},{
+    $push:{
+      clickedhistory:{timestamp:Date.now()},
+    }
+  })
+
+
+  res.redirect(data.url)
+
+
+
+})
+
+
+router.get("/clickcounts/:id",async (req,res)=>{
+  const  id=req.params.id;
+
+  const data=await db.findOne({
+    shortner:id
+  })
+  .then((data)=>res.json(data.clickedhistory.length))
+  .catch((err)=>res.json(err))
+
+})
 
 
 
