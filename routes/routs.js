@@ -15,8 +15,7 @@ router.post("/",async (req,res)=>{
       .then((data)=>console.log("data is saved into the database"))
       .catch((err)=>console.log("unable to save the data into the database"+err))
 
-
-
+      
     res.json({"shortner":`http://localhost:8001/urlshort/${shortner}`})
 
 

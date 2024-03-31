@@ -13,9 +13,6 @@ shortnerurl = new mongoose.Schema({
     },
 
     clickedhistory: [{ timestamp: Date }]
-
-
-
 }, { timestamps: true })
 
 const urlmodel = mongoose.model("urlshortner", shortnerurl)

@@ -36,6 +36,7 @@ http://localhost:8001/urlshort/clickcounts/--6F9XAr8
 
 ````
 
+make request on http://localhost:8001/urlshort  by passing the url as a urlencoded data 
 
 
 
